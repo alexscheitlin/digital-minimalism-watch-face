@@ -3,7 +3,12 @@
     <string id="AppName">digital_minimalism_watch_face</string>
 
     <string id="BackgroundColorTitle">Background Color</string>
-    <string id="ForegroundColorTitle">Foreground Color</string>
+    <string id="IconsColorTitle">Icons Color</string>
+    <string id="TimeColorTitle">Time Color</string>
+    <string id="DateColorTitle">Date Color</string>
+    <string id="BatteryColorTitle">Battery Color</string>
+    <string id="StepsColorTitle">Steps Color</string>
+    <string id="HeartRateColorTitle">Heart Rate Color</string>
     <string id="MilitaryFormatTitle">Military Format for 24 Hour Time</string>
 
     <string id="ColorBlack">Black</string>

@@ -1,7 +1,14 @@
 <properties>
 
     <property id="BackgroundColor" type="number">0x000000</property>
-    <property id="ForegroundColor" type="number">0xFFFFFF</property>
+    <property id="IconsColor" type="number">0x555555</property>
+
+    <property id="TimeColor" type="number">0xFFFFFF</property>
+    <property id="DateColor" type="number">0xCDCDCD</property>
+    <property id="BatteryColor" type="number">0xCCCCCC</property>
+    <property id="StepsColor" type="number">0xCCCCCC</property>
+    <property id="HeartRateColor" type="number">0xCCCCCC</property>
+
     <property id="UseMilitaryFormat" type="boolean">false</property>
 
 </properties>

@@ -5,6 +5,7 @@ import Toybox.System;
 import Toybox.WatchUi;
 
 class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
+    var iconsColor;
 
     function initialize() {
         WatchFace.initialize();
@@ -23,6 +24,8 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
 
     // Update the view
     function onUpdate(dc as Dc) as Void {
+        iconsColor = getApp().getProperty("IconsColor") as Number;
+
         displayTime();
         displayDate();
         displayBattery();
@@ -55,6 +58,7 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         // settings
         var is24Hour = System.getDeviceSettings().is24Hour;
         var useMilitaryFormat = getApp().getProperty("UseMilitaryFormat");
+        var color = getApp().getProperty("TimeColor") as Number;
 
         // data and format
         var format = "$1$:$2$";
@@ -74,11 +78,14 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
 
         // update the view
         var view = View.findDrawableById("TimeLabel") as Text;
-        view.setColor(getApp().getProperty("ForegroundColor") as Number);
+        view.setColor(color);
         view.setText(text);
     }
 
     function displayDate() {
+        // settings
+        var color = getApp().getProperty("DateColor") as Number;
+
         // data and format
         var format = "$1$ $2$";
         var localTimeInfo = Time.Gregorian.info(Time.now(), Time.FORMAT_MEDIUM);
@@ -86,10 +93,14 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
 
         // update the view
 		var view = View.findDrawableById("DateLabel") as Text;
+        view.setColor(color);
 		view.setText(text);
     }
 
     function displayBattery() {
+        // settings
+        var color = getApp().getProperty("BatteryColor") as Number;
+
         // data and format
         var format = "$1$%";
         var battery = System.getSystemStats().battery;
@@ -97,10 +108,12 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
 
         // update the view
 		var view = View.findDrawableById("BatteryLabel") as Text;
+        view.setColor(color);
 		view.setText(text);
 
         // update icon
         view = View.findDrawableById("BatteryIcon") as Text;
+        view.setColor(iconsColor);
 		if (battery >80) { view.setText("f"); }
 		if (battery <=80) { view.setText("d"); }
 		if (battery <=60) { view.setText("c"); }
@@ -109,6 +122,9 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
     }
 
     function displaySteps() {
+        // settings
+        var color = getApp().getProperty("StepsColor") as Number;
+
         // data and format
         var format = "$1$";
         var steps = ActivityMonitor.getInfo().steps;
@@ -120,10 +136,17 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
 
         // update the view
 		var view = View.findDrawableById("StepsLabel") as Text;
+        view.setColor(color);
 		view.setText(text);
+
+        view = View.findDrawableById("StepsIcon") as Text;
+        view.setColor(iconsColor);
     }
 
     function displayHeartRate() {
+        // settings
+        var color = getApp().getProperty("HeartRateColor") as Number;
+
         // data and format
         var format = "$1$";
         var heartRate = Activity.getActivityInfo().currentHeartRate;
@@ -135,7 +158,11 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
 
         // update the view
         var view = View.findDrawableById("HeartRateLabel");
+        view.setColor(color);
         view.setText(text);
+
+        view = View.findDrawableById("HeartRateIcon") as Text;
+        view.setColor(iconsColor);
     }
 
 }

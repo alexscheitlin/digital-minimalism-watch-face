@@ -2,6 +2,8 @@
 
 [Store](https://apps.garmin.com/en-US/apps/fb49245b-5670-45bb-aa88-7f97fbe6e1f7)
 
+![Watch Face Preview](store/images/cover_image.png)
+
 ## References
 
 Icon Source: [Freepik](https://www.freepik.com)

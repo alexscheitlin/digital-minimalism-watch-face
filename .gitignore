@@ -1,0 +1,5 @@
+# build
+dist/*-settings.json
+dist/*.prg
+dist/*.prg.debug.xml
+dist/*.iq

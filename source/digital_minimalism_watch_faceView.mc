@@ -98,6 +98,14 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         // update the view
 		var view = View.findDrawableById("BatteryLabel") as Text;
 		view.setText(text);
+
+        // update icon
+        view = View.findDrawableById("BatteryIcon") as Text;
+		if (battery >80) { view.setText("f"); }
+		if (battery <=80) { view.setText("d"); }
+		if (battery <=60) { view.setText("c"); }
+		if (battery <=40) { view.setText("b"); }
+		if (battery <=20) { view.setText("a"); }
     }
 
     function displaySteps() {

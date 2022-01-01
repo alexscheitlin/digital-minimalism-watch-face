@@ -2,8 +2,8 @@
 <layout id="WatchFace">
     <drawable class="Background" />
 
-    <label id="HeartRateIcon" text="h" x="136" y="15" font="@Fonts.icons" justification="Graphics.TEXT_JUSTIFY_RIGHT" color="Graphics.COLOR_LT_GRAY" />
-    <label id="HeartRateLabel" x="144" y="10" font="Graphics.FONT_SMALL" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+    <label id="HeartRateIcon" text="h" x="126" y="15" font="@Fonts.icons" justification="Graphics.TEXT_JUSTIFY_RIGHT" color="Graphics.COLOR_LT_GRAY" />
+    <label id="HeartRateLabel" x="130" y="10" font="Graphics.FONT_SMALL" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
 
     <label id="DateLabel" x="center" y="60" font="Graphics.FONT_SMALL" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
     <label id="TimeLabel" x="center" y="center" font="Graphics.FONT_SYSTEM_NUMBER_THAI_HOT" justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />

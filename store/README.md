@@ -15,6 +15,8 @@ Icons made by Freepik - https://www.freepik.com
 
 ##  What’s New (Optional) (Maximum 4,000 Characters)
 
+Version 1.1.0: Add optional arc around the watch face indicating the progress on reaching the daily goals of steps
+
 Version 1.0.2: Horizontally center heart rate
 
 Version 1.0.1: Add Settings to color time, date, steps, heart rate and battery percentage individually and change default coloring to highlight the time

@@ -9,6 +9,9 @@
     <property id="StepsColor" type="number">0xCCCCCC</property>
     <property id="HeartRateColor" type="number">0xCCCCCC</property>
 
+    <property id="DisplayStepsProgress" type="boolean">true</property>
+    <property id="StepsProgressColor" type="number">0xCCCCCC</property>
+
     <property id="UseMilitaryFormat" type="boolean">false</property>
 
 </properties>

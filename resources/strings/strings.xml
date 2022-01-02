@@ -9,6 +9,8 @@
     <string id="BatteryColorTitle">Battery Color</string>
     <string id="StepsColorTitle">Steps Color</string>
     <string id="HeartRateColorTitle">Heart Rate Color</string>
+    <string id="DisplayStepsProgressTitle">Display Steps Progress</string>
+    <string id="StepsProgressColorTitle">Steps Progress Color</string>
     <string id="MilitaryFormatTitle">Military Format for 24 Hour Time</string>
 
     <string id="ColorBlack">Black</string>

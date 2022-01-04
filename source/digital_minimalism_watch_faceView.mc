@@ -26,6 +26,12 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
     function onUpdate(dc as Dc) as Void {
         iconsColor = getApp().getProperty("IconsColor") as Number;
 
+        // clearElement("TimeLabel");
+        // clearElement("DateLabel");
+        // clearElement("BatteryLabel");
+        // clearElement("StepsLabel");
+        // clearElement("HeartRateLabel");
+
         displayTime();
         displayDate();
         displayBattery();
@@ -58,7 +64,11 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
 
 
 
-    function displayTime() as Void {
+    function clearElement(id as String) as Void {
+        var view = View.findDrawableById(id) as Text;
+        view.setText("");
+    }
+
         // settings
         var is24Hour = System.getDeviceSettings().is24Hour;
         var useMilitaryFormat = getApp().getProperty("UseMilitaryFormat");

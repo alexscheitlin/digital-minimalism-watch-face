@@ -11,6 +11,6 @@
     <label id="StepsIcon" text="g" x="118" y="200" font="@Fonts.icons" justification="Graphics.TEXT_JUSTIFY_RIGHT" />
     <label id="StepsLabel" x="122" y="195" font="Graphics.FONT_SMALL" justification="Graphics.TEXT_JUSTIFY_LEFT" />
 
-    <label id="BatteryIcon" text="f" x="center" y="235" font="@Fonts.icons" justification="Graphics.TEXT_JUSTIFY_CENTER" />
-    <label id="BatteryLabel" x="center" y="255" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    <label id="BatteryIcon" text="f" x="133" y="246" font="@Fonts.icons" justification="Graphics.TEXT_JUSTIFY_RIGHT" />
+    <label id="BatteryLabel" x="137" y="245" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" />
 </layout>

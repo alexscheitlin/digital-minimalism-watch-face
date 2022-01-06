@@ -123,9 +123,13 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         var text = Lang.format(format, [battery.format("%2d")]);
 
         // update the view
-		var view = View.findDrawableById(id) as Text;
-        view.setColor(color);
-		view.setText(text);
+        var view = View.findDrawableById(id) as Text;
+        if (battery <= getApp().getProperty("BatteryThreshold").toFloat()) {
+            view.setColor(color);
+            view.setText(text);
+        } else {
+            view.setText("");
+        }
     }
 
     function displayBatteryIcon(id as String) {
@@ -134,12 +138,16 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
 
         // update the view
         var view = View.findDrawableById(id) as Text;
-        view.setColor(iconsColor);
-		if (battery >80) { view.setText("f"); }
-		if (battery <=80) { view.setText("d"); }
-		if (battery <=60) { view.setText("c"); }
-		if (battery <=40) { view.setText("b"); }
-		if (battery <=20) { view.setText("a"); }
+        if (battery <= getApp().getProperty("BatteryThreshold").toFloat()) {
+            view.setColor(iconsColor);
+            if (battery >80) { view.setText("f"); }
+            if (battery <=80) { view.setText("d"); }
+            if (battery <=60) { view.setText("c"); }
+            if (battery <=40) { view.setText("b"); }
+            if (battery <=20) { view.setText("a"); }
+        } else {
+            view.setText("");
+        }
     }
 
     function displaySteps(id as String) {

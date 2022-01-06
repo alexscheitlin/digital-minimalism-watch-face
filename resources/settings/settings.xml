@@ -1,4 +1,11 @@
 <settings>
+    <setting propertyKey="@Properties.BatteryThreshold" title="@Strings.BatteryThresholdTitle">
+        <settingConfig type="numeric" min="0" max="100" />
+    </setting>
+
+    <setting propertyKey="@Properties.UseMilitaryFormat" title="@Strings.MilitaryFormatTitle">
+        <settingConfig type="boolean" />
+    </setting>
 
     <setting propertyKey="@Properties.BackgroundColor" title="@Strings.BackgroundColorTitle">
         <settingConfig type="list">
@@ -82,10 +89,6 @@
             <listEntry value="0xCDCDCD">@Strings.ColorLightGray</listEntry>
             <listEntry value="0xFFFFFF">@Strings.ColorWhite</listEntry>
         </settingConfig>
-    </setting>
-
-    <setting propertyKey="@Properties.UseMilitaryFormat" title="@Strings.MilitaryFormatTitle">
-        <settingConfig type="boolean" />
     </setting>
 
 </settings>

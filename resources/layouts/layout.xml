@@ -11,7 +11,6 @@
     <label id="StepsIcon" text="g" x="118" y="200" font="@Fonts.icons" justification="Graphics.TEXT_JUSTIFY_RIGHT" />
     <label id="StepsLabel" x="122" y="195" font="Graphics.FONT_SMALL" justification="Graphics.TEXT_JUSTIFY_LEFT" />
 
-    <!-- the icon seems to be too low (= high y) in the simulation but looks aligned with the label on the fenix 6x pro -->
-    <label id="BatteryIcon" text="f" x="133" y="243" font="@Fonts.icons" justification="Graphics.TEXT_JUSTIFY_RIGHT" />
+    <label id="BatteryIcon" text="f" x="133" y="246" font="@Fonts.icons" justification="Graphics.TEXT_JUSTIFY_RIGHT" />
     <label id="BatteryLabel" x="137" y="245" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" />
 </layout>

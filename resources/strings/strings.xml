@@ -2,8 +2,9 @@
 
     <string id="AppName">digital_minimalism_watch_face</string>
 
-    <string id="MilitaryFormatTitle">Military Format for 24 Hour Time</string>
     <string id="BatteryThresholdTitle">Display Battery from x Percent</string>
+    <string id="DisplayMonthTitle">Display Current Month</string>
+    <string id="MilitaryFormatTitle">Military Format for 24 Hour Time</string>
 
     <string id="BackgroundColorTitle">Background Color</string>
     <string id="IconsColorTitle">Icons Color</string>

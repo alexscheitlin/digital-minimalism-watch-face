@@ -15,6 +15,8 @@ Icons made by Freepik - https://www.freepik.com
 
 ##  What’s New (Optional) (Maximum 4,000 Characters)
 
+Version 1.1.6: Optionally display the current month in the date field above the time
+
 Version 1.1.5: Add a setting to specify beyond which point the remaining battery should be displayed (in percent)
 
 Version 1.1.4: Fix alignment of battery icon and remaining battery percentage on Fenix 6X Pro

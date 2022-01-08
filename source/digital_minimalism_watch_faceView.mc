@@ -101,11 +101,16 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
     function displayDate(id as String) {
         // settings
         var color = getApp().getProperty("DateColor") as Number;
+        var displayMonth = getApp().getProperty("DisplayMonth") as Boolean;
 
         // data and format
         var format = "$1$ $2$";
+        if (displayMonth) { format = "$1$, $2$ $3$"; }
         var localTimeInfo = Time.Gregorian.info(Time.now(), Time.FORMAT_MEDIUM);
-        var text = Lang.format(format, [localTimeInfo.day_of_week.toUpper(), localTimeInfo.day.format("%02d")]);
+        var dayOfWeek = localTimeInfo.day_of_week.toUpper();
+        var day = localTimeInfo.day.format("%02d");
+        var month = localTimeInfo.month;
+        var text = Lang.format(format, [dayOfWeek, day, month]);
 
         // update the view
 		var view = View.findDrawableById(id) as Text;

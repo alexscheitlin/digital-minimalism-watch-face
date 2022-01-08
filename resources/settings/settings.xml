@@ -3,6 +3,10 @@
         <settingConfig type="numeric" min="0" max="100" />
     </setting>
 
+    <setting propertyKey="@Properties.DisplayMonth" title="@Strings.DisplayMonthTitle">
+        <settingConfig type="boolean" />
+    </setting>
+
     <setting propertyKey="@Properties.UseMilitaryFormat" title="@Strings.MilitaryFormatTitle">
         <settingConfig type="boolean" />
     </setting>

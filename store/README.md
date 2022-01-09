@@ -15,6 +15,8 @@ Icons made by Freepik - https://www.freepik.com
 
 ##  What’s New (Optional) (Maximum 4,000 Characters)
 
+Version 2.0.0: Introduce on watch settings (with min API v3.2.0) and fix label/icon alignments
+
 Version 1.1.6: Optionally display the current month in the date field above the time
 
 Version 1.1.5: Add a setting to specify beyond which point the remaining battery should be displayed (in percent)

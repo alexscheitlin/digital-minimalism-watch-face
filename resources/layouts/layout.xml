@@ -2,15 +2,15 @@
 <layout id="WatchFace">
     <drawable class="Background" />
 
-    <label id="HeartRateIcon" text="h" x="126" y="15" font="@Fonts.icons" justification="Graphics.TEXT_JUSTIFY_RIGHT" />
-    <label id="HeartRateLabel" x="130" y="10" font="Graphics.FONT_SMALL" justification="Graphics.TEXT_JUSTIFY_LEFT" />
+    <label id="HeartRateIcon" text="h" x="126" y="30" font="@Fonts.icons" justification="Gfx.TEXT_JUSTIFY_RIGHT|Gfx.TEXT_JUSTIFY_VCENTER" />
+    <label id="HeartRateLabel" x="130" y="30" font="Gfx.FONT_SMALL" justification="Gfx.TEXT_JUSTIFY_LEFT|Gfx.TEXT_JUSTIFY_VCENTER" />
 
-    <label id="DateLabel" x="center" y="60" font="Graphics.FONT_SMALL" justification="Graphics.TEXT_JUSTIFY_CENTER" />
-    <label id="TimeLabel" x="center" y="center" font="Graphics.FONT_SYSTEM_NUMBER_THAI_HOT" justification="Graphics.TEXT_JUSTIFY_CENTER" />
+    <label id="DateLabel" x="center" y="60" font="Gfx.FONT_SMALL" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+    <label id="TimeLabel" x="center" y="center" font="Gfx.FONT_SYSTEM_NUMBER_THAI_HOT" justification="Gfx.TEXT_JUSTIFY_CENTER" />
 
-    <label id="StepsIcon" text="g" x="118" y="200" font="@Fonts.icons" justification="Graphics.TEXT_JUSTIFY_RIGHT" />
-    <label id="StepsLabel" x="122" y="195" font="Graphics.FONT_SMALL" justification="Graphics.TEXT_JUSTIFY_LEFT" />
+    <label id="StepsIcon" text="g" x="118" y="215" font="@Fonts.icons" justification="Gfx.TEXT_JUSTIFY_RIGHT|Gfx.TEXT_JUSTIFY_VCENTER" />
+    <label id="StepsLabel" x="122" y="215" font="Gfx.FONT_SMALL" justification="Gfx.TEXT_JUSTIFY_LEFT|Gfx.TEXT_JUSTIFY_VCENTER" />
 
-    <label id="BatteryIcon" text="f" x="133" y="246" font="@Fonts.icons" justification="Graphics.TEXT_JUSTIFY_RIGHT" />
-    <label id="BatteryLabel" x="137" y="245" font="Graphics.FONT_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" />
+    <label id="BatteryIcon" text="f" x="133" y="255" font="@Fonts.icons" justification="Gfx.TEXT_JUSTIFY_RIGHT|Gfx.TEXT_JUSTIFY_VCENTER" />
+    <label id="BatteryLabel" x="137" y="255" font="Gfx.FONT_XTINY" justification="Gfx.TEXT_JUSTIFY_LEFT|Gfx.TEXT_JUSTIFY_VCENTER" />
 </layout>

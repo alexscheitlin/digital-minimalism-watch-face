@@ -199,32 +199,41 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         view.setColor(iconsColor);
     }
 
-    function displayStepsProgress(dc as DC) {
-        if (getApp().getProperty("DisplayStepsProgress")) {
-            var xCenter = dc.getWidth() / 2.0;
-            var yCenter = dc.getWidth() / 2.0;
-            
-            var attr = Graphics.ARC_CLOCKWISE;
-            var penWidth = 3;
-            // show the whole pen and account for "center" not beeing centered on "even" displays
-            var radius = xCenter - penWidth - 1;
+    function displayStepsProgress(dc as Dc) {
+        // settings
+        var displayStepsProgress = getApp().getProperty("DisplayStepsProgress") as Boolean;
+        var stepsProgressColor = getApp().getProperty("StepsProgressColor") as Number;
+        if (!displayStepsProgress) { return; }
 
-            var steps = ActivityMonitor.getInfo().steps as Number;
-            var stepGoal = ActivityMonitor.getInfo().stepGoal as Number;
-            var progress = (steps.toFloat() / stepGoal) as Float;
-            var color = getApp().getProperty("StepsProgressColor") as Number;
+        // data
+        var steps = ActivityMonitor.getInfo().steps as Number;
+        var stepGoal = ActivityMonitor.getInfo().stepGoal as Number;
 
-            if (steps > 0) {
-                // Degree -> Time
-                // API: 0 -> 0300, 90 -> 1200, 180 -> 0900, 270 -> 0600
-                // APP: 0 -> 1200, 90 -> 0300, 180 -> 0600, 270 -> 0900
-                var degree = 360 - (360.0 * progress - 90.0); // API -> APP
-                if (degree < 90) { degree = 90; } // goal has been reached
+        var xCenter = dc.getWidth() / 2.0;
+        var yCenter = dc.getWidth() / 2.0;
+        var penWidth = 3;
 
-                dc.setPenWidth(penWidth);
-                dc.setColor(color, Graphics.COLOR_BLACK);
-                dc.drawArc(xCenter, yCenter, radius, attr, 90, degree);
-            }
+        // show the whole pen and account for "center" not beeing centered on "even" displays
+        var radius = xCenter - penWidth - 1;
+
+        var stepsProgress = (steps % stepGoal) as Number;
+        var percentageProgress = (stepsProgress.toFloat() / stepGoal) as Float;
+
+        var attr = Graphics.ARC_CLOCKWISE;
+        if ((((steps / stepGoal) as Number) % 2) == 1) {
+            attr = Graphics.ARC_COUNTER_CLOCKWISE;
+        }
+
+        if (stepsProgress > 0) {
+            // Degree -> Time
+            // API: 0 -> 0300, 90 -> 1200, 180 -> 0900, 270 -> 0600
+            // APP: 0 -> 1200, 90 -> 0300, 180 -> 0600, 270 -> 0900
+            var degree = 360 - (360.0 * percentageProgress - 90.0); // API -> APP
+            // if (degree < 90) { degree = 90; } // goal has been reached
+
+            dc.setPenWidth(penWidth);
+            dc.setColor(stepsProgressColor, Graphics.COLOR_BLACK);
+            dc.drawArc(xCenter, yCenter, radius, attr, 90, degree);
         }
     }
 }

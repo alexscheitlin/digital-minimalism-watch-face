@@ -8,27 +8,17 @@ import Toybox.WatchUi;
 import Toybox.Application.Properties;
 
 class SettingsView extends WatchUi.Menu2 {
-    // properties
-    var displayMonth;
-    var useMilitaryFormat;
-
     function initialize() {
         View.initialize();
-        initializeProperties();
-
         Menu2.initialize({:title=>"Settings"});
-        Menu2.setTitle("Settings");
 
-        addDisplayMonth();
-        addUseMilitaryFormat();
+        addToggleItem("DisplayMonth", Rez.Strings.DisplayMonthTitle);
+        addToggleItem("UseMilitaryFormat", Rez.Strings.MilitaryFormatTitle);
+        addToggleItem("DisplayStepsProgress", Rez.Strings.DisplayStepsProgressTitle);
 
-        // done button
+        addSubMenuItem("BatteryThreshold", "Battery Threshold", "%");
+
         Menu2.addItem(new WatchUi.MenuItem("Done", null, "done", null));
-    }
-
-    function initializeProperties() as Void {
-        useMilitaryFormat = Properties.getValue("UseMilitaryFormat");
-        displayMonth = Properties.getValue("DisplayMonth");
     }
 
     // onShow() is called when this View is brought to the foreground
@@ -40,20 +30,18 @@ class SettingsView extends WatchUi.Menu2 {
     // onHide() is called when this View is removed from the screen
     function onHide() { }
 
-    function addUseMilitaryFormat() as Void {
-        var label = WatchUi.loadResource(Rez.Strings.MilitaryFormatTitle);
+    function addToggleItem(id, resource) as Void {
+        var label = WatchUi.loadResource(resource);
         var options = {:enabled=>"On", :disabled=>"Off"};
-        var id = "UseMilitaryFormat";
-        var enabled = useMilitaryFormat;
-        Menu2.addItem(new WatchUi.ToggleMenuItem(label, options, id, enabled, null));
+        var property = Properties.getValue(id);
+        Menu2.addItem(new WatchUi.ToggleMenuItem(label, options, id, property, null));
     }
 
-    function addDisplayMonth() as Void {
-        var label = WatchUi.loadResource(Rez.Strings.DisplayMonthTitle);
-        var options = {:enabled=>"On", :disabled=>"Off"};
-        var id = "DisplayMonth";
-        var enabled = displayMonth;
-        Menu2.addItem(new WatchUi.ToggleMenuItem(label, options, id, enabled, null));
+    function addSubMenuItem(id, resource, subLabelSuffix) as Void {
+        // var label = WatchUi.loadResource(resource);
+        var property = Properties.getValue(id) as String;
+
+        Menu2.addItem(new WatchUi.MenuItem(resource, property + subLabelSuffix, id, null));
     }
 }
 
@@ -63,19 +51,67 @@ class SettingsDelegate extends WatchUi.Menu2InputDelegate {
     }
 
     function onSelect(item as WatchUi.MenuItem) as Void {
+        var id = item.getId();
+		var sublabel = item.getSubLabel();
+
         if (item instanceof WatchUi.ToggleMenuItem) {
-			System.println("id: " + item.getId() + ", value: " + item.isEnabled()); 
-			Properties.setValue(item.getId() as String, item.isEnabled());
+            var isEnabled = item.isEnabled();
+			System.println("id: " + id + ", value: " + isEnabled);
+			Properties.setValue(id as String, isEnabled);
 		}
 
-        if (item instanceof WatchUi.MenuItem && item.getId().equals("done")) {
-            WatchUi.popView(WatchUi.SLIDE_DOWN);
+        if (item instanceof WatchUi.MenuItem) {
+            switch(id) {
+                case "done":
+                    WatchUi.popView(WatchUi.SLIDE_DOWN);
+                    break;
+                case "BatteryThreshold":
+                    pushSubMenu(BatteryThresholdSubMenuDelegate, item);
+                    break;
+            }
+
         }
-       
+
         WatchUi.requestUpdate();
     }
 
-    function onBack() {
-        WatchUi.popView(WatchUi.SLIDE_DOWN);
+    function pushSubMenu(delegate, parentItem as WatchUi.MenuItem) as Void {
+        WatchUi.pushView(delegate.subMenu(), new delegate(parentItem), WatchUi.SLIDE_LEFT);
     }
+
+    function onBack() {
+	    WatchUi.popView(WatchUi.SLIDE_RIGHT);
+    }
+}
+
+class BatteryThresholdSubMenuDelegate extends WatchUi.Menu2InputDelegate {
+    var parentMenuItem;
+
+    static function subMenu() as Menu2 {
+        var subMenu = new WatchUi.Menu2({:title => "Battery Threshold"});
+
+        var items = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+        for( var i = 0; i < items.size(); i++ ) {
+            subMenu.addItem(new WatchUi.MenuItem((items[i] as String) + "%", null, items[i], null));
+        }
+
+        return subMenu;
+    }
+
+    function initialize(p) {
+        Menu2InputDelegate.initialize();
+        parentMenuItem = p;
+    }
+
+    function onSelect(subMenuItem as WatchUi.MenuItem) as Void {
+        var parentId = parentMenuItem.getId();
+        var id = subMenuItem.getId();
+        var label = subMenuItem.getLabel();
+
+        System.println("id: " + parentId + ", value: " + id);
+        Properties.setValue(parentId as String, id);
+
+		parentMenuItem.setSubLabel(label);
+		WatchUi.popView(WatchUi.SLIDE_RIGHT);
+	}
 }

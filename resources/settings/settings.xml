@@ -1,15 +1,34 @@
 <settings>
-    <setting propertyKey="@Properties.BatteryThreshold" title="@Strings.BatteryThresholdTitle">
-        <settingConfig type="numeric" min="0" max="100" />
-    </setting>
+    <!-- TODO: Group similar settings -->
 
-    <setting propertyKey="@Properties.DisplayMonth" title="@Strings.DisplayMonthTitle">
-        <settingConfig type="boolean" />
-    </setting>
-
+    <!-- Time -->
     <setting propertyKey="@Properties.UseMilitaryFormat" title="@Strings.MilitaryFormatTitle">
         <settingConfig type="boolean" />
     </setting>
+    <!-- Date -->
+    <setting propertyKey="@Properties.DisplayDate" title="@Strings.DisplayDateTitle">
+        <settingConfig type="boolean" />
+    </setting>
+    <setting propertyKey="@Properties.DisplayMonth" title="@Strings.DisplayMonthTitle">
+        <settingConfig type="boolean" />
+    </setting>
+    <!-- Field 1 -->
+    <setting propertyKey="@Properties.DisplayHeartRate" title="@Strings.DisplayHeartRateTitle">
+        <settingConfig type="boolean" />
+    </setting>
+    <!-- Field 2 -->
+    <setting propertyKey="@Properties.DisplaySteps" title="@Strings.DisplayStepsTitle">
+        <settingConfig type="boolean" />
+    </setting>
+    <!-- Field 3 -->
+    <setting propertyKey="@Properties.BatteryThreshold" title="@Strings.BatteryThresholdTitle">
+        <settingConfig type="numeric" min="0" max="100" />
+    </setting>
+    <!-- Misc -->
+    <setting propertyKey="@Properties.DisplayStepsProgress" title="@Strings.DisplayStepsProgressTitle">
+        <settingConfig type="boolean" />
+    </setting>
+
 
     <setting propertyKey="@Properties.BackgroundColor" title="@Strings.BackgroundColorTitle">
         <settingConfig type="list">
@@ -81,9 +100,6 @@
         </settingConfig>
     </setting>
 
-    <setting propertyKey="@Properties.DisplayStepsProgress" title="@Strings.DisplayStepsProgressTitle">
-        <settingConfig type="boolean" />
-    </setting>
 
     <setting propertyKey="@Properties.StepsProgressColor" title="@Strings.StepsProgressColorTitle">
         <settingConfig type="list">

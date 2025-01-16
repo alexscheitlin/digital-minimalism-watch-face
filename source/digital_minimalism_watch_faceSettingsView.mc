@@ -12,11 +12,23 @@ class SettingsView extends WatchUi.Menu2 {
         View.initialize();
         Menu2.initialize({:title=>"Settings"});
 
-        addToggleItem("DisplayMonth", Rez.Strings.DisplayMonthTitle);
+        // Time & Date
         addToggleItem("UseMilitaryFormat", Rez.Strings.MilitaryFormatTitle);
-        addToggleItem("DisplayStepsProgress", Rez.Strings.DisplayStepsProgressTitle);
+        addToggleItem("DisplayDate", Rez.Strings.DisplayDateTitle);
+        addToggleItem("DisplayMonth", Rez.Strings.DisplayMonthTitle);
 
+        // Field 1
+        addToggleItem("DisplayHeartRate", Rez.Strings.DisplayHeartRateTitle);
+
+        // Field 2
+        addToggleItem("DisplaySteps", Rez.Strings.DisplayStepsTitle);
+
+        // Field 3
         addSubMenuItem("BatteryThreshold", "Battery Threshold", "%");
+
+        // Misc
+        addToggleItem("DisplayStepsProgress", Rez.Strings.DisplayStepsProgressTitle);
+        // TODO: Add colors
 
         Menu2.addItem(new WatchUi.MenuItem("Done", null, "done", null));
     }

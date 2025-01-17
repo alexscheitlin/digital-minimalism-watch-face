@@ -16,6 +16,9 @@
     <setting propertyKey="@Properties.DisplayHeartRate" title="@Strings.DisplayHeartRateTitle">
         <settingConfig type="boolean" />
     </setting>
+    <setting propertyKey="@Properties.DisplayTemperature" title="@Strings.DisplayTemperatureTitle">
+        <settingConfig type="boolean" />
+    </setting>
     <!-- Field 2 -->
     <setting propertyKey="@Properties.DisplaySteps" title="@Strings.DisplayStepsTitle">
         <settingConfig type="boolean" />
@@ -100,6 +103,15 @@
         </settingConfig>
     </setting>
 
+    <setting propertyKey="@Properties.TemperatureColor" title="@Strings.TemperatureColorTitle">
+        <settingConfig type="list">
+            <listEntry value="0x000000">@Strings.ColorBlack</listEntry>
+            <listEntry value="0x555555">@Strings.ColorDarkGray</listEntry>
+            <listEntry value="0xCCCCCC">@Strings.ColorGrayDefault</listEntry>
+            <listEntry value="0xCDCDCD">@Strings.ColorLightGray</listEntry>
+            <listEntry value="0xFFFFFF">@Strings.ColorWhite</listEntry>
+        </settingConfig>
+    </setting>
 
     <setting propertyKey="@Properties.StepsProgressColor" title="@Strings.StepsProgressColorTitle">
         <settingConfig type="list">

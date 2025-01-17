@@ -25,7 +25,9 @@ class digital_minimalism_watch_faceApp extends Application.AppBase {
     }
 
     function getSettingsView() as Array<Views or InputDelegates>? {
-        return [new SettingsView(), new SettingsDelegate()] as Array<Views or InputDelegates>;
+        var settingsView = new SettingsView();
+        var settingsDelegate = new SettingsDelegate(settingsView);
+        return [settingsView, settingsDelegate] as Array<Views or InputDelegates>;
     }
 
 }

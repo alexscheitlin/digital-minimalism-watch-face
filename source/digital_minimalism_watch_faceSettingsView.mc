@@ -19,6 +19,7 @@ class SettingsView extends WatchUi.Menu2 {
 
         // Field 1
         addToggleItem("DisplayHeartRate", Rez.Strings.DisplayHeartRateTitle);
+        addToggleItem("DisplayTemperature", Rez.Strings.DisplayTemperatureTitle);
 
         // Field 2
         addToggleItem("DisplaySteps", Rez.Strings.DisplayStepsTitle);
@@ -37,19 +38,19 @@ class SettingsView extends WatchUi.Menu2 {
     function onShow() { }
 
     // onUpdate() is called periodically to update the View
-    function onUpdate(dc) { }
+    function onUpdate(dc as Dc) { }
 
     // onHide() is called when this View is removed from the screen
     function onHide() { }
 
-    function addToggleItem(id, resource) as Void {
+    function addToggleItem(id as String, resource as Symbol) as Void {
         var label = WatchUi.loadResource(resource);
         var options = {:enabled=>"On", :disabled=>"Off"};
         var property = Properties.getValue(id);
         Menu2.addItem(new WatchUi.ToggleMenuItem(label, options, id, property, null));
     }
 
-    function addSubMenuItem(id, resource, subLabelSuffix) as Void {
+    function addSubMenuItem(id as String, resource as String, subLabelSuffix as String) as Void {
         // var label = WatchUi.loadResource(resource);
         var property = Properties.getValue(id) as String;
 
@@ -58,18 +59,33 @@ class SettingsView extends WatchUi.Menu2 {
 }
 
 class SettingsDelegate extends WatchUi.Menu2InputDelegate {
-    function initialize() {
+    var menu;
+    function initialize(settingsView as WatchUi.Menu2) {
         Menu2InputDelegate.initialize();
+        menu = settingsView;
     }
 
     function onSelect(item as WatchUi.MenuItem) as Void {
-        var id = item.getId();
+        var id = item.getId() as String;
 		var sublabel = item.getSubLabel();
 
         if (item instanceof WatchUi.ToggleMenuItem) {
             var isEnabled = item.isEnabled();
-			System.println("id: " + id + ", value: " + isEnabled);
-			Properties.setValue(id as String, isEnabled);
+            setProperty(id, isEnabled);
+
+            if (isEnabled) {
+                var otherItemValue = false;
+                if (id.equals("DisplayHeartRate")) {
+                    var otherItemId = "DisplayTemperature";
+                    setProperty(otherItemId, otherItemValue);
+                    setToggleItemEnabled(otherItemId, otherItemValue);
+                }
+                if (id.equals("DisplayTemperature")) {
+                    var otherItemId = "DisplayHeartRate";
+                    setProperty(otherItemId, otherItemValue);
+                    setToggleItemEnabled(otherItemId, otherItemValue);
+                }
+            }
 		}
 
         if (item instanceof WatchUi.MenuItem) {
@@ -94,6 +110,19 @@ class SettingsDelegate extends WatchUi.Menu2InputDelegate {
     function onBack() {
 	    WatchUi.popView(WatchUi.SLIDE_RIGHT);
     }
+
+    private function setProperty(id as String, value) as Void{
+        System.println("id: " + id + ", value: " + value);
+        Properties.setValue(id, value);
+    }
+
+    private function setToggleItemEnabled(id as String, enabled as Boolean) as Void{
+        var otherItemIndex = menu.findItemById(id) as Number;
+        if (otherItemIndex != -1) {
+            var otherItem = menu.getItem(otherItemIndex) as WatchUi.ToggleMenuItem;
+            otherItem.setEnabled(enabled);
+        }
+    }
 }
 
 class BatteryThresholdSubMenuDelegate extends WatchUi.Menu2InputDelegate {
@@ -110,7 +139,7 @@ class BatteryThresholdSubMenuDelegate extends WatchUi.Menu2InputDelegate {
         return subMenu;
     }
 
-    function initialize(p) {
+    function initialize(p as WatchUi.MenuItem) {
         Menu2InputDelegate.initialize();
         parentMenuItem = p;
     }

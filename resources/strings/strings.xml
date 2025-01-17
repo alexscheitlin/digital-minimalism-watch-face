@@ -11,6 +11,8 @@
     <!-- Field 1 -->
     <string id="DisplayHeartRateTitle">Display Current Heart Rate</string>
     <string id="HeartRateColorTitle">Heart Rate Color</string>
+    <string id="DisplayTemperatureTitle">Display Current Outside Temperature</string>
+    <string id="TemperatureColorTitle">Temperature Color</string>
     <!-- Field 2 -->
     <string id="DisplayStepsTitle">Display Step Count</string>
     <string id="StepsColorTitle">Steps Color</string>

@@ -7,7 +7,7 @@
     <property id="DisplayMonth" type="boolean">false</property>
     <!-- Field 1 -->
     <property id="DisplayHeartRate" type="boolean">true</property>
-    <!-- <property id="DisplayTemperature" type="boolean">false</property> -->
+    <property id="DisplayTemperature" type="boolean">false</property>
     <!-- Filed 2 -->
     <property id="DisplaySteps" type="boolean">true</property>
     <!-- Field 3 -->
@@ -20,6 +20,7 @@
     <property id="TimeColor" type="number">0xFFFFFF</property>
     <property id="DateColor" type="number">0xCDCDCD</property>
     <property id="HeartRateColor" type="number">0xCCCCCC</property>
+    <property id="TemperatureColor" type="number">0xCCCCCC</property>
     <property id="StepsColor" type="number">0xCCCCCC</property>
     <property id="BatteryColor" type="number">0xCCCCCC</property>
     <property id="StepsProgressColor" type="number">0xCCCCCC</property>

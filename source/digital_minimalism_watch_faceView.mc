@@ -13,6 +13,7 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
     const batteryIcon100 = "f";
     const stepsIcon = "g";
     const heartRateIcon = "h";
+    const temperatureIcon = "i";
 
     var iconsColor;
 
@@ -60,6 +61,8 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         // Field 1
         renderHeartRate("HeartRateLabel");
         renderHeartRateIcon("HeartRateIcon");
+        renderTemperature("HeartRateLabel");
+        renderTemperatureIcon("HeartRateIcon");
 
         // Field 2
         renderSteps("StepsLabel");
@@ -149,12 +152,6 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         var view = View.findDrawableById(id) as Text;
         view.setColor(color);
         view.setText(text);
-
-        // TODO: Temperature
-        // view.setText("h");
-        // (View.findDrawableById("HeartRateIcon") as Drawable).setVisible(false);
-        // var temperature = Weather.getCurrentConditions().temperature;
-        // System.println(temperature);
     }
 
     private function renderHeartRateIcon(id as String) as Void {
@@ -165,6 +162,39 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         // update view
         var view = View.findDrawableById(id) as Text;
         view.setText(heartRateIcon);
+        view.setColor(iconsColor);
+    }
+
+    private function renderTemperature(id as String) as Void {
+        // settings
+        var displayTemperature = getProperty("DisplayTemperature") as Boolean;
+        var color = getProperty("TemperatureColor") as Number;
+        if (!displayTemperature) { return; }
+
+        // data
+        var temperature = Weather.getCurrentConditions().temperature as Number or Null;
+
+        // format
+        var format = "$1$";
+        var text = "-";
+        if (temperature != null) {
+            text = Lang.format(format, [temperature.format("%d")]);
+        }
+
+        // update view
+        var view = View.findDrawableById(id) as Text;
+        view.setColor(color);
+        view.setText(text);
+    }
+
+    private function renderTemperatureIcon(id as String) as Void {
+        // settings
+        var displayTemperature = getProperty("DisplayTemperature") as Boolean;
+        if (!displayTemperature) { return; }
+
+        // update view
+        var view = View.findDrawableById(id) as Text;
+        view.setText(temperatureIcon);
         view.setColor(iconsColor);
     }
 

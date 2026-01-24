@@ -164,7 +164,10 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         if (!displayTemperature) { return; }
 
         // data
-        var temperature = Weather.getCurrentConditions().temperature as Number or Null;
+        var temperature = null as Number or Null;
+        if (Weather.getCurrentConditions() != null) {
+          temperature = Weather.getCurrentConditions().temperature;
+        }
 
         // format
         var format = "$1$";

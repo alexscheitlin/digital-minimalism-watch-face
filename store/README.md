@@ -14,6 +14,9 @@ Credits:
 Icons made by Freepik - https://www.freepik.com
 
 ##  What’s New (Optional) (Maximum 4,000 Characters)
+Version 2.1.2: Fix temperature display
+
+Version 2.1.1: Fix display with new settings
 
 Version 2.1.0: Add temperature, extend settings, continue with step circle after goal is reached
 

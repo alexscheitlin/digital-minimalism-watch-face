@@ -306,8 +306,7 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
     }
 
     private function getProperty(id as String) {
-        // TODO: Cache Application in instance variable
-        return getApp().getProperty(id);
+        return Properties.getValue(id);
     }
 
     private function percentageToDegree(percentage as Float) {

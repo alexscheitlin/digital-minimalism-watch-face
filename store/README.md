@@ -1,6 +1,6 @@
 # Store
 
-## Title (Maximum 50 Characters) 
+## Title (Maximum 50 Characters)
 
 Digital Minimalism Watch Face
 
@@ -14,6 +14,8 @@ Credits:
 Icons made by Freepik - https://www.freepik.com
 
 ##  What’s New (Optional) (Maximum 4,000 Characters)
+
+Version 2.1.0: Add temperature, extend settings, continue with step circle after goal is reached
 
 Version 2.0.0: Introduce on watch settings (with min API v3.2.0) and fix label/icon alignments
 

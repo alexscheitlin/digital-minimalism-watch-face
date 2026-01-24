@@ -103,9 +103,7 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         var text = Lang.format(format, [hours, minutes.format("%02d")]);
 
         // update view
-        var view = View.findDrawableById(id) as Text;
-        view.setColor(color);
-        view.setText(text);
+        updateElement(id, text, color);
     }
 
     private function renderDate(id as String) as Void {
@@ -127,9 +125,7 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         var text = Lang.format(format, [dayOfWeek.toUpper(), day.format("%02d"), month]);
 
         // update view
-        var view = View.findDrawableById(id) as Text;
-        view.setColor(color);
-        view.setText(text);
+        updateElement(id, text, color);
     }
 
     private function renderHeartRate(id as String) as Void {
@@ -149,9 +145,7 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         }
 
         // update view
-        var view = View.findDrawableById(id) as Text;
-        view.setColor(color);
-        view.setText(text);
+        updateElement(id, text, color);
     }
 
     private function renderHeartRateIcon(id as String) as Void {
@@ -160,9 +154,7 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         if (!displayHeartRate) { clearElement(id); return; }
 
         // update view
-        var view = View.findDrawableById(id) as Text;
-        view.setText(heartRateIcon);
-        view.setColor(iconsColor);
+        updateElement(id, heartRateIcon, iconsColor);
     }
 
     private function renderTemperature(id as String) as Void {
@@ -182,9 +174,7 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         }
 
         // update view
-        var view = View.findDrawableById(id) as Text;
-        view.setColor(color);
-        view.setText(text);
+        updateElement(id, text, color);
     }
 
     private function renderTemperatureIcon(id as String) as Void {
@@ -193,9 +183,7 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         if (!displayTemperature) { return; }
 
         // update view
-        var view = View.findDrawableById(id) as Text;
-        view.setText(temperatureIcon);
-        view.setColor(iconsColor);
+        updateElement(id, temperatureIcon, iconsColor);
     }
 
     private function renderSteps(id as String) as Void {
@@ -215,9 +203,7 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         }
 
         // update view
-        var view = View.findDrawableById(id) as Text;
-        view.setColor(color);
-        view.setText(text);
+        updateElement(id, text, color);
     }
 
     private function renderStepsIcon(id as String) as Void {
@@ -226,9 +212,7 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         if (!displaySteps) { clearElement(id); return; }
 
         // update view
-        var view = View.findDrawableById(id) as Text;
-        view.setText(stepsIcon);
-        view.setColor(iconsColor);
+        updateElement(id, stepsIcon, iconsColor);
     }
 
     private function renderBattery(id as String) as Void {
@@ -244,13 +228,10 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         var text = Lang.format(format, [battery.format("%2d")]);
 
         // update view
-        var view = View.findDrawableById(id) as Text;
-        if (battery <= batteryThreshold) {
-            view.setColor(color);
-            view.setText(text);
-        } else {
-            view.setText("");
+        if (battery > batteryThreshold) {
+            text = "";
         }
+        updateElement(id, text, color);
     }
 
     private function renderBatteryIcon(id as String) as Void {
@@ -259,20 +240,18 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
 
         // data
         var battery = System.getSystemStats().battery as Float;
+        var text = "";
 
         // update view
-        var view = View.findDrawableById(id) as Text;
         if (battery <= batteryThreshold) {
-            view.setColor(iconsColor);
             // TODO: Also use the 80 indication
-            if (battery >80) { view.setText(batteryIcon100); }
-            if (battery <=80) { view.setText(batteryIcon060); }
-            if (battery <=60) { view.setText(batteryIcon040); }
-            if (battery <=40) { view.setText(batteryIcon020); }
-            if (battery <=20) { view.setText(batteryIcon000); }
-        } else {
-            view.setText("");
+            if (battery >80) { text = batteryIcon100; }
+            if (battery <=80) { text = batteryIcon060; }
+            if (battery <=60) { text = batteryIcon040; }
+            if (battery <=40) { text = batteryIcon020; }
+            if (battery <=20) { text = batteryIcon000; }
         }
+        updateElement(id, text, iconsColor);
     }
 
     private function renderStepsProgress(dc as Dc) as Void {
@@ -315,6 +294,12 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
     private function clearElement(id as String) as Void {
         var view = View.findDrawableById(id) as Text;
         view.setText("");
+    }
+
+    private function updateElement(id as String, text as String, color as Number) as Void {
+        var view = View.findDrawableById(id) as Text;
+        view.setText(text);
+        view.setColor(color);
     }
 
     private function getProperty(id as String) {

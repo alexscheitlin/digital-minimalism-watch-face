@@ -45,7 +45,7 @@ class SettingsView extends WatchUi.Menu2 {
 
     function addToggleItem(id as String, resource as Symbol) as Void {
         var label = WatchUi.loadResource(resource);
-        var options = {:enabled=>"On", :disabled=>"Off"};
+        var options = { :enabled=>"On", :disabled=>"Off" };
         var property = Properties.getValue(id);
         Menu2.addItem(new WatchUi.ToggleMenuItem(label, options, id, property, null));
     }
@@ -60,6 +60,7 @@ class SettingsView extends WatchUi.Menu2 {
 
 class SettingsDelegate extends WatchUi.Menu2InputDelegate {
     var menu;
+
     function initialize(settingsView as WatchUi.Menu2) {
         Menu2InputDelegate.initialize();
         menu = settingsView;
@@ -67,7 +68,7 @@ class SettingsDelegate extends WatchUi.Menu2InputDelegate {
 
     function onSelect(item as WatchUi.MenuItem) as Void {
         var id = item.getId() as String;
-		var sublabel = item.getSubLabel();
+		// var sublabel = item.getSubLabel();
 
         if (item instanceof WatchUi.ToggleMenuItem) {
             var isEnabled = item.isEnabled();

@@ -222,6 +222,7 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         // settings
         var color = getProperty("BatteryColor") as Number;
         var batteryThreshold = getProperty("BatteryThreshold").toFloat() as Float;
+        var batteryColorThreshold = getProperty("BatteryColorThreshold").toFloat() as Float;
 
         // data
         var battery = System.getSystemStats().battery;
@@ -234,12 +235,17 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
         if (battery > batteryThreshold) {
             text = "";
         }
+        if (battery <= batteryColorThreshold) {
+            color = Graphics.COLOR_RED;
+        }
         updateElement(id, text, color);
     }
 
     private function renderBatteryIcon(id as String) as Void {
         // settings
+        var color = iconsColor as Number;
         var batteryThreshold = getProperty("BatteryThreshold").toFloat() as Float;
+        var batteryColorThreshold = getProperty("BatteryColorThreshold").toFloat() as Float;
 
         // data
         var battery = System.getSystemStats().battery as Float;
@@ -254,7 +260,10 @@ class digital_minimalism_watch_faceView extends WatchUi.WatchFace {
             if (battery <=40) { text = batteryIcon020; }
             if (battery <=20) { text = batteryIcon000; }
         }
-        updateElement(id, text, iconsColor);
+        if (battery <= batteryColorThreshold) {
+            color = Graphics.COLOR_RED;
+        }
+        updateElement(id, text, color);
     }
 
     private function renderStepsProgress(dc as Dc) as Void {

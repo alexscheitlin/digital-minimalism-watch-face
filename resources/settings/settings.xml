@@ -27,6 +27,9 @@
     <setting propertyKey="@Properties.BatteryThreshold" title="@Strings.BatteryThresholdTitle">
         <settingConfig type="numeric" min="0" max="100" />
     </setting>
+    <setting propertyKey="@Properties.BatteryColorThreshold" title="@Strings.BatteryColorThresholdTitle">
+        <settingConfig type="numeric" min="0" max="100" />
+    </setting>
     <!-- Misc -->
     <setting propertyKey="@Properties.DisplayStepsProgress" title="@Strings.DisplayStepsProgressTitle">
         <settingConfig type="boolean" />

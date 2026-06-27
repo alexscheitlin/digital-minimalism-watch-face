@@ -12,6 +12,7 @@
     <property id="DisplaySteps" type="boolean">true</property>
     <!-- Field 3 -->
     <property id="BatteryThreshold" type="number">100</property>
+    <property id="BatteryColorThreshold" type="number">25</property>
     <!-- Misc -->
     <property id="DisplayStepsProgress" type="boolean">true</property>
     <!-- Colors -->

@@ -18,6 +18,7 @@
     <string id="StepsColorTitle">Steps Color</string>
     <!-- Field 3 -->
     <string id="BatteryThresholdTitle">Display Battery from x Percent</string>
+    <string id="BatteryColorThresholdTitle">Display Battery colored in Red from x Percent</string>
     <string id="BatteryColorTitle">Battery Color</string>
     <!-- Misc -->
     <string id="DisplayStepsProgressTitle">Display Steps Progress</string>

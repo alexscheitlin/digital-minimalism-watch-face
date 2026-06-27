@@ -26,6 +26,7 @@ class SettingsView extends WatchUi.Menu2 {
 
         // Field 3
         addSubMenuItem("BatteryThreshold", "Battery Threshold", "%");
+        addSubMenuItem("BatteryColorThreshold", "Battery Color Threshold", "%");
 
         // Misc
         addToggleItem("DisplayStepsProgress", Rez.Strings.DisplayStepsProgressTitle);
@@ -95,7 +96,10 @@ class SettingsDelegate extends WatchUi.Menu2InputDelegate {
                     WatchUi.popView(WatchUi.SLIDE_DOWN);
                     break;
                 case "BatteryThreshold":
-                    pushSubMenu(BatteryThresholdSubMenuDelegate, item);
+                    pushSubMenu(BatteryThresholdSubMenuDelegate, item, "Battery Threshold");
+                    break;
+                case "BatteryColorThreshold":
+                    pushSubMenu(BatteryThresholdSubMenuDelegate, item, "Battery Color Threshold");
                     break;
             }
 
@@ -104,8 +108,8 @@ class SettingsDelegate extends WatchUi.Menu2InputDelegate {
         WatchUi.requestUpdate();
     }
 
-    function pushSubMenu(delegate, parentItem as WatchUi.MenuItem) as Void {
-        WatchUi.pushView(delegate.subMenu(), new delegate(parentItem), WatchUi.SLIDE_LEFT);
+    function pushSubMenu(delegate, parentItem as WatchUi.MenuItem, title) as Void {
+        WatchUi.pushView(delegate.subMenu(title), new delegate(parentItem), WatchUi.SLIDE_LEFT);
     }
 
     function onBack() {
@@ -129,8 +133,8 @@ class SettingsDelegate extends WatchUi.Menu2InputDelegate {
 class BatteryThresholdSubMenuDelegate extends WatchUi.Menu2InputDelegate {
     var parentMenuItem;
 
-    static function subMenu() as Menu2 {
-        var subMenu = new WatchUi.Menu2({:title => "Battery Threshold"});
+    static function subMenu(title as String) as Menu2 {
+        var subMenu = new WatchUi.Menu2({:title => title});
 
         var items = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
         for( var i = 0; i < items.size(); i++ ) {

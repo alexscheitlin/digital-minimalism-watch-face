@@ -14,6 +14,9 @@ Credits:
 Icons made by Freepik - https://www.freepik.com
 
 ##  What’s New (Optional) (Maximum 4,000 Characters)
+
+Version 2.2.0: Color battery red if too low
+
 Version 2.1.2: Fix temperature display
 
 Version 2.1.1: Fix display with new settings

@@ -15,8 +15,8 @@ class digital_minimalism_watch_faceApp extends Application.AppBase {
     function onStop(state as Dictionary?) as Void { }
 
     // Return the initial view of your application here
-    function getInitialView() as Array<Views or InputDelegates>? {
-        return [new digital_minimalism_watch_faceView()] as Array<Views or InputDelegates>;
+    function getInitialView() as [WatchUi.Views] or [WatchUi.Views, WatchUi.InputDelegates] {
+        return [new digital_minimalism_watch_faceView()];
     }
 
     // New app settings have been received so trigger a UI update
@@ -24,10 +24,10 @@ class digital_minimalism_watch_faceApp extends Application.AppBase {
         WatchUi.requestUpdate();
     }
 
-    function getSettingsView() as Array<Views or InputDelegates>? {
+    function getSettingsView() as [WatchUi.Views] or [WatchUi.Views, WatchUi.InputDelegates] or Null {
         var settingsView = new SettingsView();
         var settingsDelegate = new SettingsDelegate(settingsView);
-        return [settingsView, settingsDelegate] as Array<Views or InputDelegates>;
+        return [settingsView, settingsDelegate];
     }
 
 }

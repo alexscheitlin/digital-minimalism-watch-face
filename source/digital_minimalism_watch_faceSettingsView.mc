@@ -44,7 +44,7 @@ class SettingsView extends WatchUi.Menu2 {
     // onHide() is called when this View is removed from the screen
     function onHide() { }
 
-    function addToggleItem(id as String, resource as Symbol) as Void {
+    function addToggleItem(id as String, resource as ResourceId) as Void {
         var label = WatchUi.loadResource(resource);
         var options = { :enabled=>"On", :disabled=>"Off" };
         var property = Properties.getValue(id);
